@@ -110,9 +110,104 @@ namespace FirstUniTask
             }
         }
 
+        private void btnPinsert_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-IH5CIOA;Initial Catalog=VP_Home_Task;Integrated Security=True");
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("dbo.SP_inserResult", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@roll", Convert.ToInt32(txtRollNo.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@name", txtName.Text.ToString()));
+                cmd.Parameters.Add(new SqlParameter("@subj1", Convert.ToInt32(txtSub1.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@subj2", Convert.ToInt32(txtSub2.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@subj3", Convert.ToInt32(txtSub3.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@subj4", Convert.ToInt32(txtSub4.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@total", Convert.ToInt32(totalSub.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("percent", Convert.ToInt32(PercentageAns.Text.ToString())));
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data Inserted");
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnPSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-IH5CIOA;Initial Catalog=VP_Home_Task;Integrated Security=True");
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("dbo.SP_searchResult", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@roll",Convert.ToInt32(txtRollNo.Text.ToString())));
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                foreach(DataRow dr in dt.Rows)
+                {
+                    txtName.Text = dr["Name"].ToString();
+                    txtSub1.Text = dr["Sub1"].ToString();
+                    txtSub2.Text = dr["Sub2"].ToString();
+                    txtSub3.Text = dr["Sub3"].ToString();
+                    txtSub4.Text = dr["Sub4"].ToString();
+                    totalSub.Text = dr["Total"].ToString();
+                    PercentageAns.Text = dr["Percentage"].ToString();
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnPDelete_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-IH5CIOA;Initial Catalog=VP_Home_Task;Integrated Security=True");
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("dbo.SP_deleteResult", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@roll", Convert.ToInt32(txtRollNo.Text.ToString())));
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Deleted.");
+            conn.Close();
+        }
+
+        private void btnPUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-IH5CIOA;Initial Catalog=VP_Home_Task;Integrated Security=True");
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("dbo.SP_updateResult", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@roll", Convert.ToInt32(txtRollNo.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@name", txtName.Text.ToString()));
+                cmd.Parameters.Add(new SqlParameter("@subj1", Convert.ToInt32(txtSub1.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@subj2", Convert.ToInt32(txtSub2.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@subj3", Convert.ToInt32(txtSub3.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@subj4", Convert.ToInt32(txtSub4.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("@total", Convert.ToInt32(totalSub.Text.ToString())));
+                cmd.Parameters.Add(new SqlParameter("percent", Convert.ToInt32(PercentageAns.Text.ToString())));
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data Updated.");
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
             try
             {
                 string con = "Data Source=DESKTOP-IH5CIOA;Initial Catalog=VP_Home_Task;Integrated Security=True";

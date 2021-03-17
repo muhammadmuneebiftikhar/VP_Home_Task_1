@@ -50,6 +50,10 @@ namespace FirstUniTask
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnPinsert = new System.Windows.Forms.Button();
+            this.btnPSearch = new System.Windows.Forms.Button();
+            this.btnPDelete = new System.Windows.Forms.Button();
+            this.btnPUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -232,11 +236,55 @@ namespace FirstUniTask
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // btnPinsert
+            // 
+            this.btnPinsert.Location = new System.Drawing.Point(248, 170);
+            this.btnPinsert.Name = "btnPinsert";
+            this.btnPinsert.Size = new System.Drawing.Size(75, 23);
+            this.btnPinsert.TabIndex = 19;
+            this.btnPinsert.Text = "P_Insert";
+            this.btnPinsert.UseVisualStyleBackColor = true;
+            this.btnPinsert.Click += new System.EventHandler(this.btnPinsert_Click);
+            // 
+            // btnPSearch
+            // 
+            this.btnPSearch.Location = new System.Drawing.Point(248, 199);
+            this.btnPSearch.Name = "btnPSearch";
+            this.btnPSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnPSearch.TabIndex = 20;
+            this.btnPSearch.Text = "P_Search";
+            this.btnPSearch.UseVisualStyleBackColor = true;
+            this.btnPSearch.Click += new System.EventHandler(this.btnPSearch_Click);
+            // 
+            // btnPDelete
+            // 
+            this.btnPDelete.Location = new System.Drawing.Point(248, 228);
+            this.btnPDelete.Name = "btnPDelete";
+            this.btnPDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnPDelete.TabIndex = 21;
+            this.btnPDelete.Text = "P_Delete";
+            this.btnPDelete.UseVisualStyleBackColor = true;
+            this.btnPDelete.Click += new System.EventHandler(this.btnPDelete_Click);
+            // 
+            // btnPUpdate
+            // 
+            this.btnPUpdate.Location = new System.Drawing.Point(248, 257);
+            this.btnPUpdate.Name = "btnPUpdate";
+            this.btnPUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnPUpdate.TabIndex = 22;
+            this.btnPUpdate.Text = "P_Update";
+            this.btnPUpdate.UseVisualStyleBackColor = true;
+            this.btnPUpdate.Click += new System.EventHandler(this.btnPUpdate_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 385);
+            this.Controls.Add(this.btnPUpdate);
+            this.Controls.Add(this.btnPDelete);
+            this.Controls.Add(this.btnPSearch);
+            this.Controls.Add(this.btnPinsert);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
@@ -288,6 +336,10 @@ namespace FirstUniTask
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnPinsert;
+        private System.Windows.Forms.Button btnPSearch;
+        private System.Windows.Forms.Button btnPDelete;
+        private System.Windows.Forms.Button btnPUpdate;
     }
 }
 
